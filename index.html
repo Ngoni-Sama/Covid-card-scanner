@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link type="text/css" rel="stylesheet" href="JsQRScanner.css">
-    <title>WebQRScanner</title>
+    <title>ZITF Hackathon</title>
     <script type="text/javascript" src="./js/jsqrscanner.nocache.js"></script>
   </head>
 
@@ -19,7 +19,7 @@
     </noscript>
 
     <div class="row-element-set row-element-set-QRScanner">
-      <h1>WebQRScanner</h1>
+      <h1>ZITF Hackathon</h1>
       <div class="row-element">
         <div class="FlexPanel detailsPanel QRScannerShort">
           <div class="FlexPanel shortInfoPanel">
@@ -38,7 +38,7 @@
         <div class="form-field form-field-memo">
           <div class="form-field-caption-panel">
             <div class="gwt-Label form-field-caption">
-              Scanned text
+              Validator
             </div>
           </div>
           <div class="FlexPanel form-field-input-panel">
@@ -59,7 +59,21 @@
         </div>
       </div>
       <br>
+
+      <h1>Validate Using ID</h1>
+
+<form action="/action_page.php">
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname"><br><br>
+  <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname"><br><br>
+  <label for="lname">NATIONAL IDENTITY NUMBER:</label>
+  <input type="text" id="lname" name="lname"><br><br>
+  <input type="submit" value="Submit">
+</form>
     </div>
+
+
   <script type="text/javascript">
     function onQRCodeScanned(scannedText)
     {
@@ -67,14 +81,18 @@
     	if(scannedTextMemo)
     	{
     		scannedTextMemo.value = scannedText;
+
+
     	}
     	var scannedTextMemoHist = document.getElementById("scannedTextMemoHist");
     	if(scannedTextMemoHist)
     	{
     		scannedTextMemoHist.value = scannedTextMemoHist.value + '\n' + scannedText;
     	}
+
+      //If (scannedTextMemo.Contains("vaccinations.covid19sadc.com")) {return success;}
     }
-    
+
     function provideVideo()
     {
         var n = navigator;
@@ -87,8 +105,8 @@
             },
             audio: false
           });
-        } 
-        
+        }
+
         return Promise.reject('Your browser does not support getUserMedia');
     }
 
@@ -102,24 +120,24 @@
               exCameras.push(device.deviceId)
             }
          });
-            
+
             return Promise.resolve(exCameras);
         }).then(function(ids){
             if(ids.length === 0)
             {
               return Promise.reject('Could not find a webcam');
             }
-            
+
             return navigator.mediaDevices.getUserMedia({
                 video: {
                   'optional': [{
                     'sourceId': ids.length === 1 ? ids[0] : ids[1]//this way QQ browser opens the rear camera
                     }]
                 }
-            });        
-        });                
+            });
+        });
     }
-    
+
     //this function will be called when JsQRScanner is ready to use
     function JsQRScannerReady()
     {
@@ -134,8 +152,8 @@
     	{
     	    //append the jbScanner to an existing DOM element
     		jbScanner.appendTo(scannerParentElement);
-    	}        
+    	}
     }
-  </script>    
+  </script>
   </body>
 </html>
