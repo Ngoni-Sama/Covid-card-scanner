@@ -1,2 +1,2 @@
 # Links
-- copy from https://github.com/jbialobr/JsQRScanner/tree/master/war
+- For purposes of ZITF hackathon 22/09/2021
